@@ -1,6 +1,6 @@
 # BotAdmin
 ## BotAdmin 安装版
-# 当前版本为: v1.9.2
+# 当前版本为: v1.9.3
 ## 安装方法:
 ### wget http://auth.nfivf.com:9090/mirror/install.sh && sh ./install.sh
 ### 参数 mirror=cn 则下载国内的镜像
