@@ -6,5 +6,3 @@
 ### 参数 mirror=cn 则下载国内的镜像
 ### 直接指定 mirror=https://github.com/kuangxianwei/botadmin/archive/master.zip
 ### 默认是Github下载
-### ngx_filter=off
-### 默认NGINX启用第三方过滤替换模块 ngx_filter=off 为不启用
