@@ -223,7 +223,7 @@ EOF
 }
 
 # 添加chromium 安装缺失的依赖库
-Install_Chromium
+Install_Chromium &
 
 # 下载解压程序
 Download_Botadmin
@@ -242,6 +242,9 @@ command -v bzip2 || {
 }
 Check_Firewall
 Firewall_Enable 8080/tcp
+echo "等待chromium安装缺失的依赖库完成..."
+wait # 等待
 systemctl enable $AppName.service
+systemctl start $AppName
 echo "$AppName 安装成功"
 echo "http://ip:8080"
