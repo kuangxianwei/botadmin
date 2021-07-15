@@ -236,6 +236,7 @@ cd "$AppDir" || exit 1
 test -d ./data/contact || mkdir -p ./data/contact
 chmod -R 0755 ./data
 echo "open_basedir=$AppDir/data/contact:/tmp/:/proc/" >./data/contact/.user.ini
+chattr +i ./data/contact/.user.ini
 command -v bzip2 || {
   yum -y install bzip2 || exit 1
 }
