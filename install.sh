@@ -73,20 +73,10 @@ fi
 # 添加chromium 安装缺失的依赖库
 Install_Chromium() {
   echo "添加chromium 安装缺失的依赖库"
-  # 依赖库
-  for plugin in pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64; do
-    if ! yum install -y "$plugin"; then
-      echo "Error:安装依赖库 $plugin 失败"
-      return 1
-    fi
-  done
-  # 字体
-  for plugin in ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc; do
-    if ! yum install -y "$plugin"; then
-      echo "Error:安装字体库 $plugin 失败"
-      return 1
-    fi
-  done
+  if ! yum install -y pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64 \
+    ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc; then
+    Error "安装Chromium依赖库失败"
+  fi
 }
 
 # 下载程序
@@ -223,7 +213,7 @@ EOF
 }
 
 # 添加chromium 安装缺失的依赖库
-Install_Chromium &
+Install_Chromium
 
 # 下载解压程序
 Download_Botadmin
@@ -242,8 +232,6 @@ command -v bzip2 || {
 }
 Check_Firewall
 Firewall_Enable 8080/tcp
-echo "等待chromium安装缺失的依赖库完成..."
-wait # 等待
 systemctl enable $AppName.service
 systemctl start $AppName
 echo "$AppName 安装成功"
