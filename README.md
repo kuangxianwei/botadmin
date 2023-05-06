@@ -1,7 +1,7 @@
 # BotAdmin
 ## BotAdmin 安装版
 ## 当前版本为: v2.3.9
-## 安装环境: centos 7.x centos 8.x
+## 安装环境: centos 7.x
 ### 安装前最好先升级系统软件 yum -y upgrade
 
 ## 默认安装方法:
