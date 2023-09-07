@@ -40,6 +40,9 @@
         <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="configure">
             <i class="layui-icon layui-icon-set"></i>
         </button>
+        <button class="layui-btn layui-btn-sm layui-btn-primary" lay-event="validate" lay-tips="验证KEY正常">
+            <i class="layui-icon layui-icon-vercode"></i>
+        </button>
     </div>
     <div class="layui-btn-group">
         <button class="layui-btn layui-btn-sm layui-btn-primary" lay-event="export" lay-tips="导出配置">
@@ -167,6 +170,16 @@
                     });
                 });
             },
+            validate: function (obj, ids) {
+                main.request({
+                    url: URL + '/validate',
+                    data: {ids: ids.join()},
+                    done: function () {
+                        main.ws.log();
+                        return false;
+                    }
+                })
+            }
         });
         // 监听搜索
         form.on('select(search-type)', function (obj) {
